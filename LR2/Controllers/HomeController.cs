@@ -56,5 +56,27 @@ namespace LR2.Controllers
                 return View();
             }
         }
+        public IActionResult TaskSecond()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult TaskSecond(string text1)
+        {
+            int first = text1.IndexOf("я") + 1;
+            int last = text1.LastIndexOf("я") + 1;
+            if (first == 0)
+            {
+                ViewBag.Text = $"Букв я нет в предложении: {text1}";
+            }
+            else
+            {
+                ViewBag.Text = text1;
+                ViewBag.First = first;
+                ViewBag.Last = last;
+            }
+            return View();
+        }
     }
 }
