@@ -28,5 +28,33 @@ namespace LR2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult TaskFirst()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult TaskFirst(string a, string b, string c)
+        {
+            if (double.TryParse(a, out double n1) && double.TryParse(b, out double n2) && double.TryParse(c, out double n3))
+            {
+                double[] numbers = { n1, n2, n3 };
+                List<double> result = new List<double>();
+                foreach (var number in numbers)
+                {
+                    if (number > -3 && number <= 9)
+                    {
+                        result.Add(number);
+                    }
+                }
+                ViewBag.Result = result;
+                return View();
+            }
+            else
+            {
+                ViewBag.E = "¬ведены некорректные данные, попробуйте еще раз";
+                return View();
+            }
+        }
     }
 }
