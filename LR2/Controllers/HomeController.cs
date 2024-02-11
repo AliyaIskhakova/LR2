@@ -78,5 +78,30 @@ namespace LR2.Controllers
             }
             return View();
         }
+        public IActionResult TaskThird()
+        {
+            int[] array = new int[20];
+            Random random = new Random();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(-15, 41);
+            }
+
+            double sum = 0;
+
+            for (int i = 0; i < array.Length; i += 2)
+            {
+                if (array[i] > 0)
+                {
+                    sum += array[i];
+                }
+            }
+
+            ViewBag.Array = array;
+            ViewBag.Sum = sum;
+
+            return View();
+        }
     }
 }
